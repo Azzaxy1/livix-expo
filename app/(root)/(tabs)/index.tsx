@@ -4,9 +4,14 @@ import { Text, View } from "react-native";
 
 export default function Index() {
   return (
-    <View className="flex-1 justify-center items-center">
+    <View className="items-center justify-center flex-1">
       <Button />
-      <Text className="font-bold text-red-500 my-10">Hello World</Text>
+      <Text className="my-10 text-2xl text-red-500 font-rubik">
+        Welcome to ReState
+      </Text>
+      <Text className="my-10 text-2xl font-bold text-primary-300">
+        Welcome to ReState
+      </Text>
       <Link href="/sign-in">Sign In</Link>
       <Link href="/explore">Explore</Link>
       <Link href="/profile">Profile</Link>
