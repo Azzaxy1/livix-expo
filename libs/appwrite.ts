@@ -27,27 +27,19 @@ export const login = async () => {
       redirectUri
     );
 
-    console.log({ response });
-
     if (!response) throw new Error("Create OAuth2 token failed");
 
     const browserResult = await openAuthSessionAsync(response.toString());
     if (browserResult.type !== "success")
       throw new Error("Create Oauth token failed");
 
-    console.log({ browserResult });
-
     const url = new URL(browserResult.url);
-    console.log({ url });
     const secret = url.searchParams.get("secret")?.toString();
-    console.log({ secret });
     const userId = url.searchParams.get("userId")?.toString();
-    console.log({ userId });
 
     if (!secret || !userId) throw new Error("Create OAuth2 token failed");
 
     const session = await account.createSession(userId, secret);
-    console.log({ session });
     if (!session) throw new Error("Failed to create session");
 
     return true;
