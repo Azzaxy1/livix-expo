@@ -1,4 +1,11 @@
-import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import {
+  Button,
+  Image,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { featuredCards, cards } from "@/constants/data";
 import { FlashList } from "@shopify/flash-list";
@@ -8,6 +15,7 @@ import Search from "@/components/Search";
 import icons from "@/constants/icons";
 import { useGlobalContext } from "@/libs/global-provider";
 import Filters from "@/components/Filters";
+import seed from "@/libs/seed";
 
 const Index = () => {
   const { user } = useGlobalContext();
@@ -96,15 +104,6 @@ const Index = () => {
 
               <Filters />
             </View>
-
-            {/* <FlashList
-          data={cards}
-          estimatedItemSize={200}
-          renderItem={({ item }) => (
-            <View className="gap-10 mr-5">
-            </View>
-          )}
-        /> */}
           </View>
         }
       />
