@@ -4,6 +4,7 @@ import {
   Client,
   Databases,
   OAuthProvider,
+  Query,
 } from "react-native-appwrite";
 import * as Linking from "expo-linking";
 import { openAuthSessionAsync } from "expo-web-browser";
@@ -89,5 +90,67 @@ export const getCurrentUser = async () => {
   } catch (e) {
     console.log(e);
     return null;
+  }
+};
+
+export const getLatestProperties = async () => {
+  try {
+    const result = await databases.listDocuments(
+      config.databaseId!,
+      config.propertiesCollectionId!,
+      [Query.orderAsc("$createdAt"), Query.limit(5)]
+    );
+
+    console.log("result", result);
+
+    return result.documents;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+export const getProperties = async ({
+  filter,
+  query,
+  limit,
+}: {
+  filter: string;
+  query: string;
+  limit: number;
+}) => {
+  try {
+    const builderQuery = [Query.orderDesc("$createdAt")];
+
+    console.log("filter", filter);
+    console.log("query", query);
+    console.log("limit", limit);
+
+    if (filter && filter !== "All") {
+      builderQuery.push(Query.equal("type", filter));
+    }
+
+    if (query) {
+      builderQuery.push(
+        Query.or([
+          Query.search("name", query),
+          Query.search("type", query),
+          Query.search("address", query),
+        ])
+      );
+    }
+
+    if (limit) builderQuery.push(Query.limit(limit));
+
+    const result = await databases.listDocuments(
+      config.databaseId!,
+      config.propertiesCollectionId!,
+      builderQuery
+    );
+
+    return result.documents;
+  } catch (error) {
+    console.log(error);
+    return [];
   }
 };

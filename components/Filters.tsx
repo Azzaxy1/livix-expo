@@ -8,8 +8,6 @@ const Filters = memo(() => {
   const [selectedCategory, setSelectedCategory] = useState(
     params.filter || "All"
   );
-  console.log(selectedCategory, "selectedCategory");
-  console.log(params.filter, "params filter");
 
   const handleCategoryPress = (category: string) => {
     if (category === selectedCategory) {

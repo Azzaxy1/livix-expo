@@ -1,13 +1,12 @@
 import {
-  Button,
+  ActivityIndicator,
   Image,
-  ScrollView,
+  RefreshControl,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { featuredCards, cards } from "@/constants/data";
 import { FlashList } from "@shopify/flash-list";
 
 import { Card, FeaturedCard } from "@/components/Cards";
@@ -15,25 +14,80 @@ import Search from "@/components/Search";
 import icons from "@/constants/icons";
 import { useGlobalContext } from "@/libs/global-provider";
 import Filters from "@/components/Filters";
-import seed from "@/libs/seed";
+import { useAppwrite } from "@/libs/useAppwrite";
+import { getLatestProperties, getProperties } from "@/libs/appwrite";
+import { router, useLocalSearchParams } from "expo-router";
+import { useEffect, useState } from "react";
+import NoResults from "@/components/NoResults";
 
 const Index = () => {
   const { user } = useGlobalContext();
+  const params = useLocalSearchParams<{ query?: string; filter?: string }>();
+  const [refreshing, setRefreshing] = useState(false);
+  console.log("params", params);
+
+  const { data: latestProperties, loading: latestPropertiesLoading } =
+    useAppwrite({
+      fn: getLatestProperties,
+    });
+
+  const {
+    data: properties,
+    loading,
+    refetch,
+  } = useAppwrite({
+    fn: getProperties,
+    params: {
+      filter: params.filter!,
+      query: params.query!,
+      limit: 6,
+    },
+    skip: true,
+  });
+
+  useEffect(() => {
+    console.log("params", params);
+
+    refetch({
+      filter: params.filter!,
+      query: params.query!,
+      limit: 6,
+    });
+  }, [params.filter, params.query]);
+
+  const handleCardPress = (id: string) =>
+    router.push({ pathname: "/(root)/(tabs)/profile", params: { id } });
+
+  const handleRefresh = async () => {
+    setRefreshing(true);
+    await refetch();
+    setRefreshing(false);
+  };
 
   return (
     <SafeAreaView className="flex-1 bg-white">
       <FlashList
-        data={cards}
+        data={properties}
         renderItem={({ item }) => (
           <View className="flex gap-5 mx-2">
-            <Card {...item} />
+            <Card item={item} onPress={() => handleCardPress(item.$id)} />
           </View>
         )}
         estimatedItemSize={100}
         numColumns={2}
         contentContainerStyle={{ paddingBottom: 100 }}
         keyExtractor={(_, index) => index.toString()}
+        ListEmptyComponent={
+          loading ? (
+            <ActivityIndicator size="large" className="text-primary-300" />
+          ) : (
+            <NoResults />
+          )
+        }
         ListHeaderComponentStyle={{ display: "flex", gap: 10 }}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
+        }
         showsVerticalScrollIndicator={false}
         ListHeaderComponent={
           <View className="px-5">
@@ -74,20 +128,29 @@ const Index = () => {
 
             {/* Our Recommendation */}
             <View className="flex-row items-center justify-between gap-5">
-              <FlashList
-                data={featuredCards}
-                horizontal
-                estimatedItemSize={200}
-                keyExtractor={(item) => item.title}
-                showsHorizontalScrollIndicator={false}
-                contentContainerStyle={{ paddingRight: 20 }}
-                className="gap-5"
-                renderItem={({ item }) => (
-                  <View className="flex gap-10 mr-5">
-                    <FeaturedCard {...item} />
-                  </View>
-                )}
-              />
+              {latestPropertiesLoading ? (
+                <ActivityIndicator size="large" className="text-primary-300" />
+              ) : !latestProperties || latestProperties.length === 0 ? (
+                <NoResults />
+              ) : (
+                <FlashList
+                  data={latestProperties}
+                  horizontal
+                  estimatedItemSize={200}
+                  keyExtractor={(item) => item.$id}
+                  showsHorizontalScrollIndicator={false}
+                  contentContainerStyle={{ paddingRight: 20 }}
+                  className="gap-5"
+                  renderItem={({ item }) => (
+                    <View className="flex gap-10 mr-5">
+                      <FeaturedCard
+                        item={item}
+                        onPress={() => handleCardPress(item.$id)}
+                      />
+                    </View>
+                  )}
+                />
+              )}
             </View>
 
             <View className="my-5 ">

@@ -2,30 +2,23 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import React from "react";
 import images from "@/constants/images";
 import icons from "@/constants/icons";
+import { Models } from "react-native-appwrite";
 
 interface Props {
-  image: any;
-  title: string;
-  location: string;
-  price: string;
-  rating: number;
+  item: Models.Document;
   onPress?: () => void;
 }
 
 export const FeaturedCard = ({
   onPress,
-  image,
-  title,
-  location,
-  price,
-  rating,
+  item: { image, rating, name, price, address },
 }: Props) => {
   return (
     <TouchableOpacity
       onPress={onPress}
       className="relative flex flex-col bg-white rounded-lg items-star w-60 h-80"
     >
-      <Image source={image} className="rounded-2xl size-full" />
+      <Image source={{ uri: image }} className="rounded-2xl size-full" />
       <Image
         source={images.cardGradient}
         className="absolute bottom-0 size-full rounded-2xl"
@@ -41,9 +34,9 @@ export const FeaturedCard = ({
           className="text-xl text-white font-rubik-extrabold"
           numberOfLines={1}
         >
-          {title}
+          {name}
         </Text>
-        <Text className="text-base text-white font-rubik">{location}</Text>
+        <Text className="text-base text-white font-rubik">{address}</Text>
         <View className="flex flex-row items-center justify-between w-full gap-2 mt-1">
           <Text className="text-xl text-white font-rubik-extrabold">
             Rp. {price}
@@ -56,11 +49,7 @@ export const FeaturedCard = ({
 };
 
 export const Card = ({
-  image,
-  location,
-  title,
-  price,
-  rating,
+  item: { image, rating, name, price, address },
   onPress,
 }: Props) => {
   return (
@@ -75,13 +64,11 @@ export const Card = ({
         </Text>
       </View>
 
-      <Image source={image} className="w-full h-40 rounded-lg" />
+      <Image source={{ uri: image }} className="w-full h-40 rounded-lg" />
 
       <View className="flex flex-col mt-2">
-        <Text className="text-base text-black-300 font-rubik-bold">
-          {title}
-        </Text>
-        <Text className="text-xs font-rubik text-black-300">{location}</Text>
+        <Text className="text-base text-black-300 font-rubik-bold">{name}</Text>
+        <Text className="text-xs font-rubik text-black-300">{address}</Text>
         <View className="flex flex-row items-center justify-between w-full gap-2 mt-1">
           <Text className="text-base font-rubik-bold text-primary-300">
             Rp. {price}

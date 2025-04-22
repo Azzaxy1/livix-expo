@@ -50,7 +50,6 @@ const SettingsItem = ({
 
 const Profile = () => {
   const { user, refetch } = useGlobalContext();
-  console.log(user, "user profile");
 
   const handleLogout = async () => {
     const result = await logout();
@@ -102,7 +101,7 @@ const Profile = () => {
         <View className="flex flex-col mt-5 border-t border-primary-200">
           <SettingsItem
             icon={icons.logout}
-            title="Title"
+            title="Logout"
             showArrow={false}
             onPress={handleLogout}
           />

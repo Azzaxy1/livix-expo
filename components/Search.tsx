@@ -7,7 +7,6 @@ import { router, useLocalSearchParams } from "expo-router";
 const Search = () => {
   const params = useLocalSearchParams<{ query: string }>();
   const [search, setSearch] = useState(params.query);
-  console.log(params.query, "params query");
 
   const debouncedSearch = useDebouncedCallback((text: string) => {
     router.setParams({ query: text });
@@ -34,9 +33,15 @@ const Search = () => {
             className="w-[90%] text-sm font-rubik text-black-300"
           />
         </View>
-        <TouchableOpacity>
-          <Image source={icons.filter} className="size-5 " />
-        </TouchableOpacity>
+        {search ? (
+          <TouchableOpacity onPress={() => handleSearch("")}>
+            <Text className="size-5 text-black-200">X</Text>
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity>
+            <Image source={icons.filter} className="size-5 " />
+          </TouchableOpacity>
+        )}
       </View>
     </View>
   );
