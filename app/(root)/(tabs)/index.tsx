@@ -69,7 +69,7 @@ const Index = () => {
       <FlashList
         data={properties}
         renderItem={({ item }) => (
-          <View className="flex gap-5 mx-2">
+          <View className="flex gap-5 mx-5">
             <Card item={item} onPress={() => handleCardPress(item.$id)} />
           </View>
         )}
