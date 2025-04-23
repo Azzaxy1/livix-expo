@@ -3,13 +3,9 @@ import React from "react";
 import icons from "@/constants/icons";
 import { Models } from "react-native-appwrite";
 import { facilities } from "@/constants/data";
+import { Property } from "@/types/Property";
 
-interface Props {
-  property: Models.Document | null;
-}
-
-const Facilities = ({ property }: Props) => {
-  console.log(property, "property facilities");
+const Facilities = ({ property }: Property) => {
   if (!property) return null;
 
   return (

@@ -16,6 +16,7 @@ import icons from "@/constants/icons";
 import images from "@/constants/images";
 import Agent from "@/components/Agent";
 import Facilities from "@/components/Facilities";
+import Gallery from "@/components/Gallery";
 
 const Property = () => {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -131,6 +132,8 @@ const Property = () => {
           </View>
 
           <Facilities property={property} />
+
+          <Gallery property={property} />
         </View>
       </ScrollView>
     </View>

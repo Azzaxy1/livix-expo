@@ -2,12 +2,9 @@ import { View, Text, Image } from "react-native";
 import React from "react";
 import { Models } from "react-native-appwrite";
 import icons from "@/constants/icons";
+import { Property } from "@/types/Property";
 
-interface Props {
-  property: Models.Document | null;
-}
-
-const Agent = ({ property }: Props) => {
+const Agent = ({ property }: Property) => {
   if (!property?.agent) return null;
 
   return (

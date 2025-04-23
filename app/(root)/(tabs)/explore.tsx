@@ -18,7 +18,6 @@ import { getProperties } from "@/libs/appwrite";
 import { router, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import NoResults from "@/components/NoResults";
-import images from "@/constants/images";
 
 const Explore = () => {
   const params = useLocalSearchParams<{ query?: string; filter?: string }>();
@@ -46,8 +45,9 @@ const Explore = () => {
     });
   }, [params.filter, params.query]);
 
-  const handleCardPress = (id: string) =>
-    router.push({ pathname: "/(root)/(tabs)/profile", params: { id } });
+  const handleCardPress = (id: string) => {
+    router.push(`/properties/${id}`);
+  };
 
   const handleRefresh = async () => {
     setRefreshing(true);
@@ -60,7 +60,7 @@ const Explore = () => {
       <FlashList
         data={properties}
         renderItem={({ item }) => (
-          <View className="flex gap-5 mx-4 my-2">
+          <View className="flex gap-5 mx-4">
             <ExploreCard
               item={item}
               onPress={() => handleCardPress(item.$id)}
