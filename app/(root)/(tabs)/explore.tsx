@@ -23,7 +23,6 @@ import images from "@/constants/images";
 const Explore = () => {
   const params = useLocalSearchParams<{ query?: string; filter?: string }>();
   const [refreshing, setRefreshing] = useState(false);
-  console.log("params", params);
 
   const {
     data: properties,

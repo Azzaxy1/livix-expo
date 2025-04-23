@@ -24,7 +24,6 @@ const Index = () => {
   const { user } = useGlobalContext();
   const params = useLocalSearchParams<{ query?: string; filter?: string }>();
   const [refreshing, setRefreshing] = useState(false);
-  console.log("params", params);
 
   const { data: latestProperties, loading: latestPropertiesLoading } =
     useAppwrite({
@@ -46,8 +45,6 @@ const Index = () => {
   });
 
   useEffect(() => {
-    console.log("params", params);
-
     refetch({
       filter: params.filter!,
       query: params.query!,
@@ -55,8 +52,9 @@ const Index = () => {
     });
   }, [params.filter, params.query]);
 
-  const handleCardPress = (id: string) =>
-    router.push({ pathname: "/(root)/(tabs)/profile", params: { id } });
+  const handleCardPress = (id: string) => {
+    router.push(`/properties/${id}`);
+  };
 
   const handleRefresh = async () => {
     setRefreshing(true);
