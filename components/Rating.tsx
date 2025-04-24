@@ -6,7 +6,7 @@ import Comment from "./Comment";
 
 const Rating = ({ property }: Property) => {
   return (
-    <View className="flex flex-col mt-5">
+    <View className="flex flex-col pb-32 mt-5">
       {property?.reviews.length > 0 && (
         <>
           <View className="flex flex-row justify-between w-full">

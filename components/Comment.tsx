@@ -11,7 +11,6 @@ const Comment = ({ reviews }: { reviews: Models.Document[] }) => {
         data={reviews}
         estimatedItemSize={100}
         horizontal
-        showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
         keyExtractor={(item) => item.$id}
         className="h-48"

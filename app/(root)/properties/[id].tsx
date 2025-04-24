@@ -22,7 +22,7 @@ import Rating from "@/components/Rating";
 
 const Property = () => {
   const { id } = useLocalSearchParams<{ id: string }>();
-  const { data: property, loading } = useAppwrite({
+  const { data: property } = useAppwrite({
     fn: getPropertyById,
     params: { id },
   });
@@ -31,10 +31,7 @@ const Property = () => {
 
   return (
     <View>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        className="pb-32 bg-white"
-      >
+      <ScrollView showsVerticalScrollIndicator={false} className="bg-white ">
         <View className="relative w-full" style={{ height: windowHeight / 2 }}>
           <Image
             source={{ uri: property?.image }}
@@ -142,6 +139,22 @@ const Property = () => {
           <Rating property={property} />
         </View>
       </ScrollView>
+
+      <View className="absolute bottom-0 z-50 flex flex-row items-center justify-between w-full px-5 h-[110px] bg-white border-t border-l border-r border-primary-200 rounded-t-[36px]">
+        <View className="flex flex-col">
+          <Text className="text-base tracking-[2px] uppercase text-black-200 font-rubik-medium">
+            Price
+          </Text>
+          <Text className="text-2xl text-primary-300 font-rubik-semibold">
+            Rp. {property?.price}
+          </Text>
+        </View>
+        <TouchableOpacity className="items-center px-16 py-4 rounded-full bg-primary-300">
+          <Text className="text-lg text-white font-rubik-bold">
+            Booking Now
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
