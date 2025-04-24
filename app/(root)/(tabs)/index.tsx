@@ -62,6 +62,18 @@ const Index = () => {
     setRefreshing(false);
   };
 
+  const greetingWellcome = () => {
+    const currentHour = new Date().getHours();
+    console.log(currentHour);
+    if (currentHour < 12) {
+      return "Good Morning";
+    } else if (currentHour < 18) {
+      return "Good Afternoon";
+    } else {
+      return "Good Evening";
+    }
+  };
+
   return (
     <SafeAreaView className="flex-1 bg-white">
       <FlashList
@@ -97,7 +109,7 @@ const Index = () => {
                     className="rounded-full size-12"
                   />
                   <View className="flex-col items-start ml-3">
-                    <Text className="text-black-100">Good Morning</Text>
+                    <Text className="text-black-100">{greetingWellcome()}</Text>
                     <Text className="text-lg font-rubik-medium">
                       {user?.name}
                     </Text>
