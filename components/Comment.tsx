@@ -3,6 +3,10 @@ import React from "react";
 import { Models } from "react-native-appwrite";
 import { FlashList } from "@shopify/flash-list";
 import icons from "@/constants/icons";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+
+dayjs.extend(relativeTime);
 
 const Comment = ({ reviews }: { reviews: Models.Document[] }) => {
   return (
@@ -11,6 +15,7 @@ const Comment = ({ reviews }: { reviews: Models.Document[] }) => {
         data={reviews}
         estimatedItemSize={100}
         horizontal
+        showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
         keyExtractor={(item) => item.$id}
         className="h-48"
@@ -40,7 +45,7 @@ const Comment = ({ reviews }: { reviews: Models.Document[] }) => {
                 </Text>
               </View>
               <Text className="text-sm text-black-100 font-rubik">
-                {new Date(item.$createdAt).toDateString()}
+                {dayjs(item.$createdAt).fromNow()}
               </Text>
             </View>
           </View>
