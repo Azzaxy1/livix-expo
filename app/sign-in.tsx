@@ -43,17 +43,15 @@ const SignIn = () => {
         />
         <View className="px-10">
           <Text className="text-base text-center uppercase text-black-200 font-rubik">
-            Selamat Datang di Restate
+            Welcome to PropXy
           </Text>
           <Text className="mt-2 text-3xl text-center text-black-300 font-rubik-bold">
-            Temukan Vila Impian Anda {"\n"}{" "}
-            <Text className="text-primary-300">
-              di Destinasi Terbaik Indonesia
-            </Text>
+            Let's Get you Closer {"\n"} To{" "}
+            <Text className="text-primary-300">Your Dream Home</Text>
           </Text>
-          <View className="mt-8">
+          <View className="mt-4">
             <Text className="text-lg text-center font-rubik text-black-200">
-              Masuk ke ReState dengan Google
+              Masuk ke PropXy dengan Google
             </Text>
             <TouchableOpacity
               className="w-full px-2 py-3 mt-5 text-center bg-white rounded-full shadow-md"
