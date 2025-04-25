@@ -29,21 +29,21 @@ Build a full-stack Real Estate application with React Native, featuring Google a
 
 ### - Login Screen
 
-![plot](/assets/images/screen/login.jpg)
+<img src="./assets/images/screen/login.jpg" alt="Login Screen" width="300"/>
 
 ### - Home Screen
 
-![plot](/assets/images/screen/home.jpg)
+<img src="./assets/images/screen/home.jpg" alt="Home Screen" width="300"/>
 
 ### - Explore Screen
 
-![plot](/assets/images/screen/explore.jpg)
+<img src="./assets/images/screen/explore.jpg" alt="Explore Screen" width="300"/>
 
 ### - Profile Screen
 
-![plot](/assets/images/screen/profile.jpg)
+<img src="./assets/images/screen/profile.jpg" alt="Profile Screen" width="300"/>
 
 ### - Detail Screen
 
-![plot](/assets/images/screen/detail.jpg)
+<img src="./assets/images/screen/detail.jpg" alt="Detail Screen" width="300"/>
 
