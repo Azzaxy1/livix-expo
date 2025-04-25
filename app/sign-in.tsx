@@ -43,7 +43,7 @@ const SignIn = () => {
         />
         <View className="px-10">
           <Text className="text-base text-center uppercase text-black-200 font-rubik">
-            Welcome to PropXy
+            Welcome to LiviX
           </Text>
           <Text className="mt-2 text-3xl text-center text-black-300 font-rubik-bold">
             Let's Get you Closer {"\n"} To{" "}
@@ -51,7 +51,7 @@ const SignIn = () => {
           </Text>
           <View className="mt-4">
             <Text className="text-lg text-center font-rubik text-black-200">
-              Masuk ke PropXy dengan Google
+              Masuk ke LiviX dengan Google
             </Text>
             <TouchableOpacity
               className="w-full px-2 py-3 mt-5 text-center bg-white rounded-full shadow-md"
