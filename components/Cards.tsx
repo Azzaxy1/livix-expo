@@ -100,9 +100,9 @@ export const ExploreCard = ({
       className="flex-1 w-full px-4 py-4 mt-5 bg-white rounded-lg shadow-sm shadow-black-100/50"
       onPress={onPress}
     >
-      <View className="flex flex-row w-full h-full gap-2 ">
+      <View className="flex flex-row w-full h-full gap-2">
         <View className="relative overflow-hidden rounded-lg w-28 h-28">
-          <Image source={{ uri: image }} className="rounded-lg w-28 h-28" />
+          <Image source={{ uri: image }} className="rounded-lg w-36 h-36" />
           <View className="absolute z-50 flex flex-row items-center px-1 rounded-full top-3 right-3 bg-white/90">
             <Image source={icons.star} className="size-2.5" />
             <Text className="text-primary-300 font-rubik-bold ml-0.5 text-xs">
@@ -111,21 +111,21 @@ export const ExploreCard = ({
           </View>
         </View>
 
-        <View className="flex flex-col px-2 pt-4 justify-between w-[220px]">
-          <View className="flex flex-row items-center justify-between ">
-            <Text className="text-xl w-[100px] text-black-300 font-rubik-bold">
+        <View className="flex flex-col px-2 justify-between w-[220px]">
+          <View className="flex flex-col justify-between ">
+            <Text className="text-xl text-black-300 font-rubik-bold">
               {name}
             </Text>
+            <Text className="text-base font-rubik text-black-300">
+              {address}
+            </Text>
+          </View>
+          <View className="flex flex-row items-end justify-between pt-0 ">
             <Image
               source={icons.heart}
               className="mr-2 size-6 text-primary-300"
               tintColor="#191d31"
             />
-          </View>
-          <View className="flex flex-row items-end justify-between gap-2 pb-4 ">
-            <Text className="text-base w-[100px] font-rubik text-black-300">
-              {address}
-            </Text>
             <Text className="text-lg font-rubik-bold text-primary-300">
               {convertToRupiah(price)}
             </Text>
