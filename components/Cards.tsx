@@ -3,6 +3,7 @@ import React from "react";
 import images from "@/constants/images";
 import icons from "@/constants/icons";
 import { Models } from "react-native-appwrite";
+import { convertToRupiah } from "@/libs/utils";
 
 interface Props {
   item: Models.Document;
@@ -39,7 +40,7 @@ export const FeaturedCard = ({
         <Text className="text-base text-white font-rubik">{address}</Text>
         <View className="flex flex-row items-center justify-between w-full gap-2 mt-1">
           <Text className="text-xl text-white font-rubik-extrabold">
-            Rp. {price}
+            {convertToRupiah(price)}
           </Text>
           <Image source={icons.heart} className="size-5" />
         </View>
@@ -67,11 +68,18 @@ export const Card = ({
       <Image source={{ uri: image }} className="w-full h-40 rounded-lg" />
 
       <View className="flex flex-col mt-2">
-        <Text className="text-base text-black-300 font-rubik-bold">{name}</Text>
-        <Text className="text-xs font-rubik text-black-300">{address}</Text>
+        <Text
+          className="text-base text-black-300 font-rubik-bold"
+          numberOfLines={1}
+        >
+          {name}
+        </Text>
+        <Text className="text-xs font-rubik text-black-300" numberOfLines={1}>
+          {address}
+        </Text>
         <View className="flex flex-row items-center justify-between w-full gap-2 mt-1">
           <Text className="text-base font-rubik-bold text-primary-300">
-            Rp. {price}
+            {convertToRupiah(price)}
           </Text>
           <Image
             source={icons.heart}
@@ -119,7 +127,7 @@ export const ExploreCard = ({
               {address}
             </Text>
             <Text className="text-lg font-rubik-bold text-primary-300">
-              Rp. {price}
+              {convertToRupiah(price)}
             </Text>
           </View>
         </View>

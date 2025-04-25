@@ -19,6 +19,7 @@ import Facilities from "@/components/Facilities";
 import Gallery from "@/components/Gallery";
 import Location from "@/components/Location";
 import Rating from "@/components/Rating";
+import { convertToRupiah } from "@/libs/utils";
 
 const Property = () => {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -146,10 +147,10 @@ const Property = () => {
             Price
           </Text>
           <Text className="text-2xl text-primary-300 font-rubik-semibold">
-            Rp. {property?.price}
+            {convertToRupiah(property?.price)}
           </Text>
         </View>
-        <TouchableOpacity className="items-center px-16 py-4 rounded-full bg-primary-300">
+        <TouchableOpacity className="items-center px-12 py-4 rounded-full bg-primary-300">
           <Text className="text-lg text-white font-rubik-bold">
             Booking Now
           </Text>
