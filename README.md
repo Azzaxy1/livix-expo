@@ -1,50 +1,49 @@
-# Welcome to your Expo app 👋
+## 🤖 Introduction
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Build a full-stack Real Estate application with React Native, featuring Google authentication, dynamic property listings, and user profiles. Designed with modern tools like Expo SDK 52, Appwrite, Tailwind CSS, and TypeScript for a seamless and scalable experience.
 
-## Get started
+## ⚙️ Tech Stack
 
-1. Install dependencies
+<ul>
+   <li>Expo</li>
+   <li>React Native</li>
+   <li>TypeScript</li>
+   <li>Nativewind</li>
+   <li>Appwrite</li>
+   <li>Tailwind CSS</li>
+</ul>
 
-   ```bash
-   npm install
-   ```
+## 🔋 Features
 
-2. Start the app
+👉 **Authentication with Google**: Secure and seamless user sign-ins using Google’s authentication service.
 
-   ```bash
-    npx expo start
-   ```
+👉 **Home Screen**: Displays the latest and recommended properties with powerful search and filter functionality.
 
-In the output, you'll find options to open the app in a
+👉 **Explore Screen**: Allows users to browse all types of properties with a clean and intuitive interface.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+👉 **Property Details Screen**: Provides comprehensive information about individual properties, including images and key details.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+👉 **Profile Screen**: Customizable user settings and profile management
 
-## Get a fresh project
+## 📱 Screen Features
 
-When you're ready, run:
+### - Login Screen
 
-```bash
-npm run reset-project
-```
+![plot](/assets/images/screen/login.jpg)
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### - Home Screen
 
-## Learn more
+![plot](/assets/images/screen/home.jpg)
 
-To learn more about developing your project with Expo, look at the following resources:
+### - Explore Screen
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+![plot](/assets/images/screen/explore.jpg)
 
-## Join the community
+### - Profile Screen
 
-Join our community of developers creating universal apps.
+![plot](/assets/images/screen/profile.jpg)
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### - Detail Screen
+
+![plot](/assets/images/screen/detail.jpg)
+
